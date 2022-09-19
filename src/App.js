@@ -1,10 +1,14 @@
-import './App.css';
+import React from 'react';
+
+import Navbar from './components/navbar/navbar';
+import Home from './components/home/home';
 
 function App() {
   return (
     <div className="App">
-      <div classname="content">
-        <h1>App Component</h1>
+      <Navbar />
+      <div className="content">
+        <Home />
       </div>
     </div>
   );

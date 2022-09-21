@@ -1,8 +1,7 @@
-import React from "react";
-import { useState, useEffect } from "react"
+import React, { Fragment } from "react";
 import Bloglist from "../blog/bloglist";
 import useFetch from "../../hooks/usefetchdata";
-
+import { Outlet } from "react-router-dom";
 // /blogs Get Fetxhall blogs
 //  blogs/{id} get fetch a single blog
 // / blogs  post add new blog
@@ -12,13 +11,16 @@ import useFetch from "../../hooks/usefetchdata";
 
 
 const Home = () => {
-    const {data,isPending,error} = useFetch('http://localhost:8000/blogs')
+    const { data, isPending, error } = useFetch('http://localhost:8000/blogs')
     return (
-        <div className="home">
-            {error && <div>{error}</div>}
-            {isPending && <div>Loding......</div>}
-            <Bloglist blogs={data} comTitle='All Blogs' />
-        </div>
+        <Fragment>
+            <div className="home">
+                {error && <div>{error}</div>}
+                {isPending && <div>Loding......</div>}
+                <Bloglist blogs={data} comTitle='All Blogs' />
+            </div>
+            <Outlet />
+        </Fragment>
     );
 }
 
